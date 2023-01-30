@@ -41,7 +41,7 @@ span {
 }
 
 .photo-container li {
-  box-shadow: 0px 5px 5px -2px #242424b7;
+  box-shadow: 0px 5px 5px -2px #000;
 }
 
 .search-form {

@@ -1,33 +1,13 @@
-import React, { useRef, useCallback } from 'react'
+import React, { useRef } from 'react'
 
 const Search = (props) => {
   const exampleInput = useRef()
-
-  // const handleSubmit = useCallback((e) => {
-  //   e.preventDefault();
-  //   let query = this.name.value;
-  //   props.history.push(`/search/${query}`);
-  //   e.currentTarget.reset();
-  // }, []);
-
-  // const handleSubmit =  useCallback(() => (e) => {
-  //   console.log("child component rendered")
-  //   e.preventDefault();
-  //   let query = exampleInput.current.value;
-  //   // let query = this.name.value;
-  //   props.history.push(`/search/${query}`);
-  //   // exampleInput.current.reset();
-  //   e.currentTarget.reset();
-  // }, []
-  // )
 
   const handleSubmit = (e) => {
     console.log('child component rendered')
     e.preventDefault()
     let query = exampleInput.current.value
-    // let query = this.name.value;
     props.history.push(`/search/${query}`)
-    // exampleInput.current.reset();
     e.currentTarget.reset()
   }
 

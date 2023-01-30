@@ -33,7 +33,6 @@ const PhotoContainer = (props) => {
         .then((response) => {
           setImages(response.data.results)
           setLoading(false)
-          // displayImages(response.data.results, false);
         })
         .catch((error) => {
           console.log('Error fetching and parsing data', error)
@@ -43,31 +42,29 @@ const PhotoContainer = (props) => {
   )
 
   const sortByAscending = useMemo(() => {
-    const test = images.map((obj) => {
+    const list = images.map((obj) => {
       return { ...obj, published_at: new Date(obj.published_at) }
     })
-    return [...test].sort((objA, objB) => new Date(objA.published_at) - new Date(objB.published_at))
+    return [...list].sort((objA, objB) => new Date(objA.published_at) - new Date(objB.published_at))
   }, [images])
 
   const sortByDescending = useMemo(() => {
-    const test = images.map((obj) => {
+    const list = images.map((obj) => {
       return { ...obj, published_at: new Date(obj.published_at) }
     })
-    return [...test].sort((objA, objB) => new Date(objB.published_at) - new Date(objA.published_at))
+    return [...list].sort((objA, objB) => new Date(objB.published_at) - new Date(objA.published_at))
   }, [images])
-  // const displayImages = (images) => {
+
   let data = images
   if (data.length > 0) {
     console.log(data)
     allImages = data.map((image) => (
       <Photo url={image.cover_photo.urls.small} key={image.id} publishedDate={new Date(image.published_at).toString().substring(0, 16)} />
     ))
-    // sortImages();
   } else if (!loading) {
     allImages = <NotFound />
   }
-  //  }
-  // {info.substring(0, 20)} {info.length >= 20 && '...'}
+
   useEffect(() => {
     setImages([])
     setLoading(true)
@@ -75,7 +72,7 @@ const PhotoContainer = (props) => {
     setInit(true)
     setAsc(false)
     setDesc(false)
-  }, [props.match.params.query])
+  }, [fetchData, props.match.params.query])
 
   const sortImagesAsc = () => {
     setImages(sortByAscending)
@@ -85,7 +82,6 @@ const PhotoContainer = (props) => {
   }
 
   const sortedImagesDesc = () => {
-    // const sortedDesc = sortByDescending;
     setImages(sortByDescending)
     setInit(false)
     setAsc(false)

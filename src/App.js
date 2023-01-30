@@ -10,23 +10,11 @@ import Search from './components/Search';
 import PhotoContainer from './components/PhotoContainer';
 import PageNotFound from './components/PageNotFound';
 
-/**
- * App component handles all routes and rendered elements to the DOM.
- * @namespace App
- * @extends React Component
- */
-class App extends Component { 
-
-  /**
-   * Renders all components
-   * @memberof App component
-   * @return {string} - JSX element
-   */
+class App extends Component {
   render() {
     return (
       <div className="container">
           <Search {...this.props}/>
-          {/* <Nav /> */}
           <Switch>
             <Route exact path="/" component={PhotoContainer} />
             <Route path="/search/:query" component={PhotoContainer} />

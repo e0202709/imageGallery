@@ -1,18 +1,8 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
-
-/**
- * Nav component will mount NavBar when rendered to the DOM.
- * @namespace Nav
- * @return {string} JSX element
- */
 
 function Nav(props) {
   const { handleAscSort, handleDescSort, handleDefault, isDefault, isAsc, isDesc } = props
 
-  // const addItemButtonPressed = () => {
-  //   handleSort();
-  // };
   return (
     <nav className='main-nav'>
       <ul>
