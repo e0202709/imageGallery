@@ -70,21 +70,22 @@ input {
   outline: none;
 }
 
-.main-nav li {
+/* .main-nav button {
   width: 100%;
   margin-bottom: 1em;
-}
+} */
 
-.main-nav a {
+.main-nav button {
   display: block;
   background: #ffffff;
   padding: 12px;
   color: #0099CC;
   border: 2px solid #0099CC;
+  width: 20%;
 }
 
-.main-nav .active,
-.main-nav a:hover {
+.main-nav button.active,
+.main-nav button:hover {
   color: #ffffff;
   background-color: #0099CC;
 }

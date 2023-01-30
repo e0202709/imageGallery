@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 /**
  * NotFound component will mount when rendered to the DOM.
@@ -6,10 +6,10 @@ import React from 'react';
  * @return {string} JSX element
  */
 const NotFound = () => (
-  <div className="not-results">
+  <div className='not-results'>
     <h3>No Results Found</h3>
-    <p>You search did not return any results. Please try again.</p>
+    <p>Your search did not return any results. Please try again.</p>
   </div>
-);
+)
 
-export default NotFound;
+export default NotFound

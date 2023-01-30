@@ -7,7 +7,6 @@ import {
 
 // Import Components 
 import Search from './components/Search';
-import Nav from './components/Nav';
 import PhotoContainer from './components/PhotoContainer';
 import PageNotFound from './components/PageNotFound';
 
@@ -27,7 +26,7 @@ class App extends Component {
     return (
       <div className="container">
           <Search {...this.props}/>
-          <Nav />
+          {/* <Nav /> */}
           <Switch>
             <Route exact path="/" component={PhotoContainer} />
             <Route path="/search/:query" component={PhotoContainer} />
