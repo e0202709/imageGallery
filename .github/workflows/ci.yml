@@ -30,7 +30,7 @@ jobs:
       run: npm install --force
 
     - name: Run the tests and generate coverage report
-      run: npm test -- --coverage
+      run: npm test --coverage
 
     - name: Build
       run: npm run build
