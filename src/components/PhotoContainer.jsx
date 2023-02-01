@@ -4,6 +4,7 @@ import NotFound from './NotFound'
 import apiKey from './Config'
 import axios from 'axios'
 import Nav from './Nav'
+import { sortAsc, sortDesc } from './Sorting'
 
 // componentDidUpdate(prevProps) {
 //   if (this.props.location.key !== prevProps.location.key) {
@@ -17,17 +18,12 @@ const PhotoContainer = (props) => {
   const [asc, setAsc] = useState(false)
   const [desc, setDesc] = useState(false)
   const [init, setInit] = useState(true)
+  let query = props.match.params.query ?  props.match.params.query : 'travel'
 
-  let allImages
-  // let test = props.match.params.query || 'travel'
-  // console.log('TEST ', test)
-
-  //   const logResult = useCallback(() => {
-  //   return props.match.params.query;
-  // }, []); //logResult is memoized now.
+  let allImages = null;
 
   const fetchData = useCallback(
-    (query = 'travel') => {
+    () => {
       axios
         .get(`https://api.unsplash.com/search/collections?per_page=24&page=1&query=${query}&client_id=${apiKey}`)
         .then((response) => {
@@ -38,26 +34,20 @@ const PhotoContainer = (props) => {
           console.log('Error fetching and parsing data', error)
         })
     },
-    [props.match.params.query]
+    [query]
   )
 
   const sortByAscending = useMemo(() => {
-    const list = images.map((obj) => {
-      return { ...obj, published_at: new Date(obj.published_at) }
-    })
-    return [...list].sort((objA, objB) => new Date(objA.published_at) - new Date(objB.published_at))
+    console.log('hhi ', images)
+    return sortAsc(images)
   }, [images])
 
   const sortByDescending = useMemo(() => {
-    const list = images.map((obj) => {
-      return { ...obj, published_at: new Date(obj.published_at) }
-    })
-    return [...list].sort((objA, objB) => new Date(objB.published_at) - new Date(objA.published_at))
+    return sortDesc(images)
   }, [images])
 
   let data = images
   if (data.length > 0) {
-    console.log(data)
     allImages = data.map((image) => (
       <Photo url={image.cover_photo.urls.small} key={image.id} publishedDate={new Date(image.published_at).toString().substring(0, 16)} />
     ))
@@ -68,7 +58,7 @@ const PhotoContainer = (props) => {
   useEffect(() => {
     setImages([])
     setLoading(true)
-    fetchData(props.match.params.query)
+    fetchData()
     setInit(true)
     setAsc(false)
     setDesc(false)
@@ -99,7 +89,7 @@ const PhotoContainer = (props) => {
     <div className='photo-container'>
       <h2>
         {props.match.params.query ? 'Results of ' : ''}
-        <span>{props.match.params.query}</span>
+        <span data-testid='query'>{props.match.params.query}</span>
       </h2>
       {loading ? <h1>Loading...</h1> : null}
       <Nav

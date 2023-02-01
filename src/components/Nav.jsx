@@ -6,13 +6,13 @@ function Nav(props) {
   return (
     <nav className='main-nav'>
       <ul>
-        <button className={isAsc === true ? 'active' : undefined} onClick={handleAscSort}>
+        <button data-testid="asc-button" className={isAsc === true ? 'active' : undefined} onClick={handleAscSort}>
           Ascending
         </button>
-        <button className={isDesc === true ? 'active' : undefined} onClick={handleDescSort}>
+        <button data-testid="desc-button"className={isDesc === true ? 'active' : undefined} onClick={handleDescSort}>
           Descending
         </button>
-        <button className={isDefault === true ? 'active' : undefined} onClick={handleDefault}>
+        <button data-testid="default-button" className={isDefault === true ? 'active' : undefined} onClick={handleDefault}>
           Default
         </button>
 
