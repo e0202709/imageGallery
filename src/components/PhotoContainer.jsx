@@ -6,39 +6,29 @@ import axios from 'axios'
 import Nav from './Nav'
 import { sortAsc, sortDesc } from './Sorting'
 
-// componentDidUpdate(prevProps) {
-//   if (this.props.location.key !== prevProps.location.key) {
-//     this.resetState();
-//     this.fetchData(this.props.match.params.query);
-//   }
-// }
 const PhotoContainer = (props) => {
   const [images, setImages] = useState([])
   const [loading, setLoading] = useState(true)
   const [asc, setAsc] = useState(false)
   const [desc, setDesc] = useState(false)
   const [init, setInit] = useState(true)
-  let query = props.match.params.query ?  props.match.params.query : 'travel'
+  let query = props.match.params.query === 'imageGallery' ? 'travel' : props.match.params.query
 
-  let allImages = null;
+  let allImages = null
 
-  const fetchData = useCallback(
-    () => {
-      axios
-        .get(`https://api.unsplash.com/search/collections?per_page=24&page=1&query=${query}&client_id=${apiKey}`)
-        .then((response) => {
-          setImages(response.data.results)
-          setLoading(false)
-        })
-        .catch((error) => {
-          console.log('Error fetching and parsing data', error)
-        })
-    },
-    [query]
-  )
+  const fetchData = useCallback(() => {
+    axios
+      .get(`https://api.unsplash.com/search/collections?per_page=24&page=1&query=${query}&client_id=${apiKey}`)
+      .then((response) => {
+        setImages(response.data.results)
+        setLoading(false)
+      })
+      .catch((error) => {
+        console.log('Error fetching and parsing data', error)
+      })
+  }, [query])
 
   const sortByAscending = useMemo(() => {
-    console.log('hhi ', images)
     return sortAsc(images)
   }, [images])
 
