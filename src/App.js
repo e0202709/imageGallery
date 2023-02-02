@@ -16,7 +16,7 @@ class App extends Component {
       <div className="container">
           <Search {...this.props}/>
           <Switch>
-            <Route exact path="/" component={PhotoContainer} />
+            <Route exact path="/imageGallery" component={PhotoContainer} />
             <Route path="/search/:query" component={PhotoContainer} />
             <Route component={PageNotFound} />
           </Switch>
