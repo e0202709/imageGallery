@@ -1,14 +1,16 @@
 import React from 'react'
 import { render, screen, fireEvent } from '@testing-library/react'
 import App from './App'
-import { BrowserRouter } from 'react-router-dom'
+import { BrowserRouter , MemoryRouter} from 'react-router-dom'
 import '@testing-library/jest-dom/extend-expect'
 
 beforeEach(() => {
+const route = '/imageGallery'
+
   render(
-    <BrowserRouter>
+    <MemoryRouter initialEntries={[route]}>
       <App />
-    </BrowserRouter>,
+    </MemoryRouter>,
   )
 })
 
