@@ -15,6 +15,10 @@ function Nav(props) {
         <button data-testid="default-button" className={isDefault === true ? 'active' : undefined} onClick={handleDefault}>
           Default
         </button>
+
+        {/* <li><NavLink to="/search/travel">Travel</NavLink></li>
+        <li><NavLink to="/search/food">Food</NavLink></li>
+        <li><NavLink to="/search/music">Music</NavLink></li> */}
       </ul>
     </nav>
   )
