@@ -42,7 +42,7 @@ jobs:
       run: |
        git config --global user.name e0202709
        git config --global user.email e0202709@u.nus.edu
-       git remote set-url origin https://e0202709:${github_token}@github.com/e0202709/imageGallery.git
+       git remote set-url origin https://username:${github_token}@github.com/e0202709/imageGallery.git
        npm run deploy
       env:
        username: 'e0202709'
