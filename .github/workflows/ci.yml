@@ -47,5 +47,5 @@ jobs:
       env:
        user_name: 'e0202709'
        user_email: 'e0202709@u.nus.edu'
-       github_token: ${{ secrets.TEST_TOKEN }}
+       github_token: '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'
        repository: ${{ github.repository }}
