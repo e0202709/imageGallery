@@ -38,7 +38,6 @@ const PhotoContainer = (props) => {
   )
 
   const sortByAscending = useMemo(() => {
-    console.log('hhi ', images)
     return sortAsc(images)
   }, [images])
 

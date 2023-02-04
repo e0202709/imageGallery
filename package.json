@@ -42,5 +42,6 @@
     "@testing-library/react": "^12.1.2",
     "prettier": "^2.8.3"
   },
+  
   "homepage": "https://e0202709.github.io/imageGallery"
 }
